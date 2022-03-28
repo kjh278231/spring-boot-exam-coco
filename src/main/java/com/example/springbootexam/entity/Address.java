@@ -25,7 +25,4 @@ public class Address {
     private String email;
     private String address;
     private int age;
-
-    @OneToMany(mappedBy = "address")
-    private List<CellPhone> cellPhoneList;
 }

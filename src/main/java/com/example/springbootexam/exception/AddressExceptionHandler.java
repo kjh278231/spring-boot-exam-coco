@@ -15,39 +15,19 @@ import java.util.Date;
 @ControllerAdvice
 @RestController
 public class AddressExceptionHandler extends ResponseEntityExceptionHandler {
-
-    @ExceptionHandler(AddressNotFoundException.class)
-    public final ResponseEntity<Object> handleAddressNotFoundException(Exception ex, WebRequest request) {
-        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
-        return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
-    }
-
-    @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
-        return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
-    @ExceptionHandler({AlreadyExistEmailException.class, AlreadyExistCellPhoneException.class})
-    public final ResponseEntity<Object> handleAlreadyExistEmailException(Exception ex, WebRequest request) {
-        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
-        return new ResponseEntity<>(exceptionResponse, HttpStatus.CONFLICT);
-    }
-
     //    TODO 6.1 AddressExceptionHandler.handleAddressNotFoundException 구현
-//    public final ResponseEntity<Object> handleAddressNotFoundException(Exception ex, WebRequest request) {
-//        return null;
-//    }
-
+    public final ResponseEntity<Object> handleAddressNotFoundException(Exception ex, WebRequest request) {
+        return null;
+    }
 
     //TODO 6.2 AddressExceptionHandler.handleMethodArgumentNotValid 재정의
-//    @Override
-//    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-//        return null;
-//    }
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        return null;
+    }
 
     //TODO 7.1 이메일 체크 이후 저장
-//    public final ResponseEntity<Object> handleAlreadyExistEmailException(Exception ex, WebRequest request) {
-//        return null;
-//    }
+    public final ResponseEntity<Object> handleAlreadyExistEmailException(Exception ex, WebRequest request) {
+        return null;
+    }
 }
