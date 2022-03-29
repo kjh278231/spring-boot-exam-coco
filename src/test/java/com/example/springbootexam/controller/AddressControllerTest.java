@@ -18,6 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.example.springbootexam.service.AddressService;
 import org.springframework.test.web.servlet.MvcResult;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 import static com.example.springbootexam.MockData.*;
@@ -139,5 +140,23 @@ public class AddressControllerTest {
         });
         assertEquals("exist@test.com already exist", exceptionResponse.getMessage());
         assertEquals("uri=/addresses", exceptionResponse.getDetail());
+    }
+
+    @Test
+    @DisplayName("/addresses/average-age API를 호출하면 모든 사용자의 평균 나이가 조회 된다.")
+    public void retrieveAverageAge() throws Exception {
+        given(mockService.getAverageAge()).willReturn(36.8);
+
+        mockMvc.perform(get("/addresses/average-age"))
+                .andExpect(jsonPath("$").value(36.8));
+    }
+
+    @Test
+    @DisplayName("/addresses/all-user-name API를 호출하면 모든 사용자의 이름이 ,와 함께 조회 된다.")
+    public void retrieveAllUserName() throws Exception {
+        given(mockService.getAllUserNameWithComma()).willReturn("Jaden, Jade, Iann, Bradley, Matt");
+
+        mockMvc.perform(get("/addresses/all-user-name"))
+                .andExpect(jsonPath("$").value("Jaden, Jade, Iann, Bradley, Matt"));
     }
 }

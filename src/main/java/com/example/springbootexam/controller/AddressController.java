@@ -43,8 +43,17 @@ public class AddressController {
         return null;
     }
 
+    // TODO 7.2 평균 나이 조회 하기
+    public double retrieveAverageAge() {
+        return 0;
+    }
 
-    //TODO 7.2 CellPhone
+    // TODO 7.3 전체 이름 가져오기
+    public String retrieveAllUserName() {
+        return null;
+    }
+
+    //TODO 7.4 CellPhone
 //    public List<CellPhone> retrieveCellPhoneListByAddress(@PathVariable Integer id) {
 //        return null;
 //    }

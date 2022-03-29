@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import com.example.springbootexam.repository.AddressRepository;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -109,4 +110,24 @@ public class AddressServiceTest {
         subject.saveAddress(Address.builder().name("new").email("exist@email").address("test").build());
     }
 
+    @Test
+    @DisplayName("Database에 저장 된 모든 사용자의 평균 나이를 가져온다.")
+    public void getAverageAge() {
+        given(mockRepository.findAll()).willReturn(Arrays.asList(getJaden(), getJade(), getIann(), getBradley(), getMatt()));
+
+        double result = subject.getAverageAge();
+
+        then(mockRepository).should().findAll();
+        assertEquals(new BigDecimal(36.8), new BigDecimal(result));
+    }
+
+    @Test
+    @DisplayName("Database에 저장 된 모든 사용자의 이름을 ,을 포함한 하나의 String으로 가져온다.")
+    public void getAllUserNameWithComma() {
+        given(mockRepository.findAll()).willReturn(Arrays.asList(getJaden(), getJade(), getIann(), getBradley(), getMatt()));
+
+        String result = subject.getAllUserNameWithComma();
+
+        assertEquals("Jaden, Jade, Iann, Bradley, Matt", result);
+    }
 }

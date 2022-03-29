@@ -5,7 +5,7 @@
 
 ## 1.2 AddressController.retrieveAddressList 전체 조회 구현 (TODO 1.2)
 - AddressService.getAddressList를 호출한다.
-- AddressControllerTest.retrieveAddressList 테스트가 통과 되도록 한다. 
+- AddressControllerTest.retrieveAddressList 테스트가 통과 되도록 한다.
 
 #2 Address 단건 조회 (GET /addresses/{id})
 ## 2.1 AddressService.getAddress와 단건 조회 구현 (TODO 2.1)
@@ -39,7 +39,7 @@
 
 ## 4.2 AddressController.deleteAddressr 삭제 구현 (TODO 4.2)
 - 입력받은 id와 함께 AddressSerevice.deleteAdderess를 호출 한다.
-- AddressControllerTest.deleteAddress 테스트가 통과 되도록 한다.  
+- AddressControllerTest.deleteAddress 테스트가 통과 되도록 한다.
 
 #5 Address 조건 조회 (GET /addresses?searchKeyword=)
 ## 5.1 AddressService.getAddressBySearchKeyword 조건 조회 구현 (TODO 5.1)
@@ -64,13 +64,22 @@
 - AddressControllerTest.handleMethodArgumentNotValidTest 테스트가 통과 되도록 한다.
 
 # 7. 보너스 문제
-## 7.1 이메일 체크 이후 저장 
+## 7.1 이메일 체크 이후 저장
 - AddressService.saveAddress를 수정하고 AddressExceptionHandler.handleAlreadyExistEmailException을 구현한다.
 - 새로운 사용자를 추가 하려고 할 때 이미 존재하는 이메일이면 AlreadyExistEmailException 에러를 발생 시킨다.
 - 해당 에러의 HttpStatus는 409 이다.
 - AddressControllerTest.handleAlreadyExistEmailExceptionTest 테스트가 통과 되도록 한다.
 
-## 7.2 CellPhone
+## 7.2 평균 나이 조회 하기 (GET /addresses/average-age)
+- 평균 나이를 조회하는 AddressService.getAverageAge를 작성하고 AddressServiceTest.getAverageAge 테스트가 통과 되도록 한다.
+- 평균 나이를 조회하는 API인 AddressController.retrieveAverageAge에 작성하고 AddressControllerTest.retrieveAverageAge 테스트가 통과 되도록 한다.
+
+## 7.3 전체 이름 가져오기 (GET /addresses/all-user-name)
+- 전체 이름을 가져오는 AddressService.getAllUserNameWithComma를 작성하고 AddressServiceTest.getAllUserNameWithComma 테스트가 통과 되도록 한다.
+- 전체 이름을 가져오는 API인 GET /addresses/average-age를 AddressController.retrieveAllUserName 작성하고 AddressControllerTest.retrieveAllUserName 테스트가 통과 되도록 한다.
+- 형식은 Vue과제에서 했던 것과 마찬가지로 이름 사이를 , 로 구분한다.
+
+## 7.4 CellPhone
 - id(Integer), carrier(String), cellPhoneNo(String)을 가진 CellPhone entity를 만든다.
 - Address와 CellPhone 의 관계는 1:n 이다.
 - address id에 해당하는 모든 핸드폰 번호를 리턴하는 GET /addresses/{id}/cell-phones REST API를 구현한다.

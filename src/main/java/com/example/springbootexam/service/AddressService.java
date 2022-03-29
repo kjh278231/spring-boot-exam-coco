@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.example.springbootexam.repository.AddressRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AddressService {
@@ -34,6 +35,16 @@ public class AddressService {
 
     //TODO 5.1 AddressService 조건 조회 구현
     public List<Address> getAddressListBySearchKeyword(String searchKeyword) {
+        return null;
+    }
+
+    //TODO 7.2 평균 나이 조회 하기
+    public double getAverageAge() {
+        return 0;
+    }
+
+    //TODO 7.3 전체 이름 가져오기
+    public String getAllUserNameWithComma() {
         return null;
     }
 }
